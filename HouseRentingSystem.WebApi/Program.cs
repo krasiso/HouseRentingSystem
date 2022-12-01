@@ -9,6 +9,14 @@ builder.Services.AddSwaggerGen();
 
 builder.Services.AddApplicationServices();
 builder.Services.AddHouseRentingDbContext(builder.Configuration);
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("all", opt =>
+    {
+        opt.AllowAnyOrigin();
+        opt.AllowAnyMethod();
+    });
+});
 
 var app = builder.Build();
 
